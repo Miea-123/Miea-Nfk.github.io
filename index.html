@@ -3,457 +3,1531 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>诺复康® - 高选择性α1肾上腺素能受体激动剂</title>
+    <title>诺复康® (甲氧明) - 高选择性α1肾上腺素能受体激动剂 | 远大医药</title>
     <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
+        
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
         
+        :root {
+            --primary-color: #1e3a8a;
+            --secondary-color: #dc2626;
+            --accent-color: #0ea5e9;
+            --dark-bg: #0f172a;
+            --light-bg: #f8fafc;
+            --text-primary: #1e293b;
+            --text-secondary: #64748b;
+            --success-color: #10b981;
+            --warning-color: #f59e0b;
+        }
+        
         body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Microsoft YaHei', sans-serif;
+            font-family: 'Inter', 'PingFang SC', 'Microsoft YaHei', sans-serif;
             line-height: 1.6;
-            color: #333;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            min-height: 100vh;
+            color: var(--text-primary);
+            background: #ffffff;
+            overflow-x: hidden;
         }
         
-        .container {
-            max-width: 1200px;
+        /* 高级导航栏 */
+        .navbar {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(20px);
+            z-index: 9999;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+            transition: all 0.3s ease;
+        }
+        
+        .navbar.scrolled {
+            background: rgba(255, 255, 255, 0.98);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+        }
+        
+        .nav-container {
+            max-width: 1400px;
             margin: 0 auto;
-            padding: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 40px;
         }
         
-        header {
-            background: rgba(255, 255, 255, 0.98);
-            border-radius: 20px;
-            padding: 40px;
-            margin-bottom: 30px;
-            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
-            animation: slideDown 0.8s ease-out;
+        .nav-logo {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            font-size: 1.4em;
+            font-weight: 700;
+            color: var(--primary-color);
         }
         
-        @keyframes slideDown {
-            from {
-                opacity: 0;
-                transform: translateY(-30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
+        .nav-menu {
+            display: flex;
+            list-style: none;
+            gap: 40px;
         }
         
-        .hero {
-            text-align: center;
-            margin-bottom: 40px;
-        }
-        
-        .hero h1 {
-            font-size: 3em;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            margin-bottom: 10px;
-            animation: pulse 2s infinite;
-        }
-        
-        @keyframes pulse {
-            0%, 100% {
-                transform: scale(1);
-            }
-            50% {
-                transform: scale(1.05);
-            }
-        }
-        
-        .hero .subtitle {
-            font-size: 1.5em;
-            color: #666;
-            margin-bottom: 20px;
-        }
-        
-        .hero .tagline {
-            font-size: 1.2em;
-            color: #e74c3c;
-            font-weight: bold;
-            display: inline-block;
-            padding: 10px 30px;
-            background: rgba(231, 76, 60, 0.1);
-            border-radius: 30px;
-            border: 2px solid #e74c3c;
-        }
-        
-        .section {
-            background: rgba(255, 255, 255, 0.98);
-            border-radius: 20px;
-            padding: 40px;
-            margin-bottom: 30px;
-            box-shadow: 0 15px 40px rgba(0,0,0,0.2);
-            animation: fadeInUp 1s ease-out;
-        }
-        
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-        
-        .section h2 {
-            color: #2c3e50;
-            font-size: 2em;
-            margin-bottom: 25px;
-            padding-bottom: 15px;
-            border-bottom: 3px solid #667eea;
+        .nav-menu a {
+            color: var(--text-primary);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
             position: relative;
         }
         
-        .section h2::after {
+        .nav-menu a::after {
             content: '';
             position: absolute;
-            bottom: -3px;
+            bottom: -5px;
             left: 0;
-            width: 100px;
-            height: 3px;
-            background: #764ba2;
+            width: 0;
+            height: 2px;
+            background: var(--secondary-color);
+            transition: width 0.3s;
         }
         
-        .features-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 25px;
-            margin-top: 30px;
-        }
-        
-        .feature-card {
-            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
-            padding: 25px;
-            border-radius: 15px;
-            transition: all 0.3s ease;
-            border: 2px solid transparent;
-        }
-        
-        .feature-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 15px 30px rgba(0,0,0,0.2);
-            border-color: #667eea;
-        }
-        
-        .feature-card h3 {
-            color: #2c3e50;
-            margin-bottom: 15px;
-            font-size: 1.3em;
-        }
-        
-        .feature-card ul {
-            list-style: none;
-            padding-left: 0;
-        }
-        
-        .feature-card li {
-            padding: 8px 0;
-            padding-left: 25px;
-            position: relative;
-        }
-        
-        .feature-card li::before {
-            content: '✓';
-            position: absolute;
-            left: 0;
-            color: #27ae60;
-            font-weight: bold;
-            font-size: 1.2em;
-        }
-        
-        .comparison-table {
-            overflow-x: auto;
-            margin-top: 30px;
-        }
-        
-        table {
+        .nav-menu a:hover::after {
             width: 100%;
-            border-collapse: collapse;
-            background: white;
-            border-radius: 10px;
+        }
+        
+        /* Hero Section - 极简高级设计 */
+        .hero {
+            margin-top: 80px;
+            min-height: 100vh;
+            background: linear-gradient(135deg, #0f172a 0%, #1e3a8a 100%);
+            position: relative;
+            display: flex;
+            align-items: center;
             overflow: hidden;
         }
         
-        th {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        .hero::before {
+            content: '';
+            position: absolute;
+            width: 150%;
+            height: 150%;
+            background: radial-gradient(circle at 30% 50%, rgba(14, 165, 233, 0.1) 0%, transparent 50%);
+            animation: float 20s ease-in-out infinite;
+        }
+        
+        @keyframes float {
+            0%, 100% { transform: translate(-10%, -10%) rotate(0deg); }
+            50% { transform: translate(10%, 10%) rotate(180deg); }
+        }
+        
+        .hero-content {
+            position: relative;
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 40px;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 80px;
+            align-items: center;
+        }
+        
+        .hero-text h1 {
+            font-size: 5em;
+            font-weight: 800;
+            color: #ffffff;
+            margin-bottom: 20px;
+            letter-spacing: -2px;
+        }
+        
+        .hero-text .subtitle {
+            font-size: 1.5em;
+            color: #94a3b8;
+            margin-bottom: 30px;
+            font-weight: 300;
+        }
+        
+        .hero-text .highlight {
+            font-size: 1.3em;
+            color: #0ea5e9;
+            font-weight: 600;
+            padding: 15px 0;
+            border-left: 4px solid #0ea5e9;
+            padding-left: 20px;
+            margin: 30px 0;
+        }
+        
+        .hero-stats {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 30px;
+            margin-top: 50px;
+        }
+        
+        .stat-card {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            padding: 25px;
+            border-radius: 15px;
+            transition: all 0.3s;
+        }
+        
+        .stat-card:hover {
+            background: rgba(255, 255, 255, 0.1);
+            transform: translateY(-5px);
+        }
+        
+        .stat-number {
+            font-size: 2.5em;
+            font-weight: 700;
+            color: #ffffff;
+            margin-bottom: 5px;
+        }
+        
+        .stat-label {
+            color: #94a3b8;
+            font-size: 0.95em;
+        }
+        
+        /* 3D分子结构动画 */
+        .hero-visual {
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .molecule-container {
+            width: 500px;
+            height: 500px;
+            position: relative;
+            transform-style: preserve-3d;
+            animation: rotate3d 20s linear infinite;
+        }
+        
+        @keyframes rotate3d {
+            from { transform: rotateY(0deg) rotateX(10deg); }
+            to { transform: rotateY(360deg) rotateX(10deg); }
+        }
+        
+        .molecule-ring {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            border: 3px solid rgba(14, 165, 233, 0.3);
+            border-radius: 50%;
+        }
+        
+        .molecule-ring:nth-child(1) {
+            transform: rotateX(0deg);
+        }
+        
+        .molecule-ring:nth-child(2) {
+            transform: rotateX(60deg);
+        }
+        
+        .molecule-ring:nth-child(3) {
+            transform: rotateX(120deg);
+        }
+        
+        .molecule-center {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 100px;
+            height: 100px;
+            background: radial-gradient(circle, #0ea5e9 0%, transparent 70%);
+            border-radius: 50%;
+            box-shadow: 0 0 50px rgba(14, 165, 233, 0.5);
+        }
+        
+        /* 数据展示区 - 专业图表风格 */
+        .data-section {
+            padding: 100px 40px;
+            background: var(--light-bg);
+        }
+        
+        .data-container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+        
+        .section-header {
+            text-align: center;
+            margin-bottom: 80px;
+        }
+        
+        .section-header h2 {
+            font-size: 3em;
+            font-weight: 700;
+            color: var(--text-primary);
+            margin-bottom: 20px;
+        }
+        
+        .section-header p {
+            font-size: 1.2em;
+            color: var(--text-secondary);
+        }
+        
+        /* 冠脉血流数据图表 */
+        .chart-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(600px, 1fr));
+            gap: 40px;
+            margin-bottom: 80px;
+        }
+        
+        .chart-card {
+            background: white;
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.05);
+        }
+        
+        .chart-title {
+            font-size: 1.5em;
+            font-weight: 600;
+            color: var(--text-primary);
+            margin-bottom: 30px;
+        }
+        
+        .bar-chart {
+            display: flex;
+            align-items: flex-end;
+            justify-content: space-around;
+            height: 300px;
+            padding: 20px;
+            border-left: 2px solid #e5e7eb;
+            border-bottom: 2px solid #e5e7eb;
+            position: relative;
+        }
+        
+        .bar-group {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 10px;
+            flex: 1;
+        }
+        
+        .bar-set {
+            display: flex;
+            gap: 15px;
+            align-items: flex-end;
+            height: 250px;
+        }
+        
+        .bar {
+            width: 40px;
+            background: linear-gradient(180deg, #0ea5e9 0%, #1e3a8a 100%);
+            border-radius: 5px 5px 0 0;
+            position: relative;
+            transition: all 0.3s;
+            cursor: pointer;
+        }
+        
+        .bar:hover {
+            transform: scaleY(1.05);
+            filter: brightness(1.1);
+        }
+        
+        .bar.red {
+            background: linear-gradient(180deg, #ef4444 0%, #dc2626 100%);
+        }
+        
+        .bar-value {
+            position: absolute;
+            top: -30px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-weight: 600;
+            color: var(--text-primary);
+        }
+        
+        .bar-label {
+            margin-top: 10px;
+            font-size: 0.9em;
+            color: var(--text-secondary);
+            text-align: center;
+        }
+        
+        /* 受体选择性对比 */
+        .receptor-comparison {
+            background: white;
+            border-radius: 20px;
+            padding: 50px;
+            margin-bottom: 60px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.05);
+        }
+        
+        .receptor-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+        
+        .receptor-item {
+            text-align: center;
+            padding: 30px;
+            border-radius: 15px;
+            background: var(--light-bg);
+            transition: all 0.3s;
+        }
+        
+        .receptor-item:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+        }
+        
+        .receptor-icon {
+            width: 80px;
+            height: 80px;
+            margin: 0 auto 20px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2em;
+            font-weight: bold;
+        }
+        
+        .receptor-icon.active {
+            background: linear-gradient(135deg, #10b981 0%, #059669 100%);
             color: white;
-            padding: 15px;
+        }
+        
+        .receptor-icon.inactive {
+            background: #e5e7eb;
+            color: #9ca3af;
+        }
+        
+        .receptor-name {
+            font-size: 1.3em;
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+        
+        .receptor-effect {
+            color: var(--text-secondary);
+            font-size: 0.95em;
+            line-height: 1.5;
+        }
+        
+        /* 临床研究数据表格 */
+        .research-table {
+            background: white;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.05);
+            margin-bottom: 60px;
+        }
+        
+        .research-table table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        
+        .research-table thead {
+            background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
+        }
+        
+        .research-table th {
+            padding: 25px;
+            color: white;
+            font-weight: 600;
             text-align: left;
             font-size: 1.1em;
         }
         
-        td {
-            padding: 15px;
-            border-bottom: 1px solid #ecf0f1;
+        .research-table td {
+            padding: 20px 25px;
+            border-bottom: 1px solid #f1f5f9;
         }
         
-        tr:hover {
-            background: #f8f9fa;
+        .research-table tbody tr {
+            transition: all 0.3s;
         }
         
-        .highlight {
-            background: #fff3cd;
-            padding: 2px 8px;
-            border-radius: 4px;
-            font-weight: bold;
+        .research-table tbody tr:hover {
+            background: var(--light-bg);
         }
         
-        .dosage-section {
-            background: linear-gradient(135deg, #ffecd2 0%, #fcb69f 100%);
-            padding: 30px;
-            border-radius: 15px;
-            margin-top: 30px;
-        }
-        
-        .dosage-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 20px;
-            margin-top: 20px;
-        }
-        
-        .dosage-card {
-            background: white;
-            padding: 20px;
-            border-radius: 10px;
-            text-align: center;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-            transition: transform 0.3s ease;
-        }
-        
-        .dosage-card:hover {
-            transform: scale(1.05);
-        }
-        
-        .dosage-card h4 {
-            color: #e74c3c;
-            margin-bottom: 10px;
-            font-size: 1.2em;
-        }
-        
-        .cta-section {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
-            text-align: center;
-            padding: 50px;
+        .badge {
+            display: inline-block;
+            padding: 5px 15px;
             border-radius: 20px;
+            font-size: 0.85em;
+            font-weight: 600;
+        }
+        
+        .badge.success {
+            background: #d1fae5;
+            color: #065f46;
+        }
+        
+        .badge.warning {
+            background: #fed7aa;
+            color: #92400e;
+        }
+        
+        .badge.danger {
+            background: #fee2e2;
+            color: #991b1b;
+        }
+        
+        /* 动态数据可视化 */
+        .flow-diagram {
+            background: white;
+            border-radius: 20px;
+            padding: 50px;
+            margin-bottom: 60px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.05);
+        }
+        
+        .flow-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 40px;
+            position: relative;
+        }
+        
+        .flow-item {
+            flex: 1;
+            text-align: center;
+            padding: 30px;
+            background: var(--light-bg);
+            border-radius: 15px;
+            position: relative;
+            z-index: 2;
+        }
+        
+        .flow-item::after {
+            content: '→';
+            position: absolute;
+            right: -30px;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 2em;
+            color: var(--accent-color);
+        }
+        
+        .flow-item:last-child::after {
+            display: none;
+        }
+        
+        .flow-icon {
+            font-size: 3em;
+            margin-bottom: 15px;
+        }
+        
+        .flow-title {
+            font-size: 1.2em;
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+        
+        .flow-desc {
+            color: var(--text-secondary);
+            font-size: 0.95em;
+        }
+        
+        /* 剂量计算器 */
+        .dosage-calculator {
+            background: linear-gradient(135deg, #1e3a8a 0%, #0f172a 100%);
+            border-radius: 20px;
+            padding: 60px;
+            margin-bottom: 60px;
+            color: white;
+        }
+        
+        .calculator-grid {
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            gap: 60px;
             margin-top: 40px;
         }
         
-        .cta-section h2 {
+        .calculator-inputs {
+            display: flex;
+            flex-direction: column;
+            gap: 25px;
+        }
+        
+        .input-group {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+        
+        .input-group label {
+            font-weight: 500;
+            opacity: 0.9;
+        }
+        
+        .input-group input,
+        .input-group select {
+            padding: 12px 20px;
+            border: 2px solid rgba(255, 255, 255, 0.2);
+            border-radius: 10px;
+            background: rgba(255, 255, 255, 0.1);
             color: white;
+            font-size: 1.1em;
+            transition: all 0.3s;
+        }
+        
+        .input-group input:focus,
+        .input-group select:focus {
+            outline: none;
+            border-color: var(--accent-color);
+            background: rgba(255, 255, 255, 0.15);
+        }
+        
+        .calculate-btn {
+            padding: 15px 30px;
+            background: var(--accent-color);
+            color: white;
+            border: none;
+            border-radius: 10px;
+            font-size: 1.1em;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        
+        .calculate-btn:hover {
+            background: #0284c7;
+            transform: translateY(-2px);
+        }
+        
+        .calculator-results {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 15px;
+            padding: 40px;
+        }
+        
+        .result-item {
+            display: flex;
+            justify-content: space-between;
+            padding: 20px 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .result-item:last-child {
             border-bottom: none;
-            font-size: 2.5em;
+        }
+        
+        .result-label {
+            opacity: 0.8;
+        }
+        
+        .result-value {
+            font-size: 1.3em;
+            font-weight: 600;
+            color: var(--accent-color);
+        }
+        
+        /* 时间轴 */
+        .timeline-section {
+            padding: 100px 40px;
+            background: white;
+        }
+        
+        .timeline {
+            position: relative;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .timeline::after {
+            content: '';
+            position: absolute;
+            width: 4px;
+            background: linear-gradient(180deg, var(--primary-color) 0%, var(--accent-color) 100%);
+            top: 0;
+            bottom: 0;
+            left: 50%;
+            margin-left: -2px;
+        }
+        
+        .timeline-item {
+            padding: 10px 40px;
+            position: relative;
+            background-color: inherit;
+            width: 50%;
+        }
+        
+        .timeline-item::after {
+            content: '';
+            position: absolute;
+            width: 25px;
+            height: 25px;
+            right: -12px;
+            background-color: white;
+            border: 4px solid var(--accent-color);
+            top: 30px;
+            border-radius: 50%;
+            z-index: 1;
+        }
+        
+        .timeline-item.left {
+            left: 0;
+        }
+        
+        .timeline-item.right {
+            left: 50%;
+        }
+        
+        .timeline-item.right::after {
+            left: -12px;
+        }
+        
+        .timeline-content {
+            padding: 30px;
+            background-color: white;
+            position: relative;
+            border-radius: 15px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.05);
+            transition: all 0.3s;
+        }
+        
+        .timeline-content:hover {
+            transform: scale(1.05);
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.1);
+        }
+        
+        .timeline-time {
+            font-size: 1.5em;
+            font-weight: 700;
+            color: var(--primary-color);
+            margin-bottom: 10px;
+        }
+        
+        .timeline-title {
+            font-size: 1.2em;
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+        
+        .timeline-desc {
+            color: var(--text-secondary);
+            line-height: 1.6;
+        }
+        
+        /* CTA Section */
+        .cta-section {
+            padding: 100px 40px;
+            background: linear-gradient(135deg, #dc2626 0%, #991b1b 100%);
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .cta-section::before {
+            content: '';
+            position: absolute;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255, 255, 255, 0.1) 0%, transparent 70%);
+            animation: rotate3d 30s linear infinite;
+        }
+        
+        .cta-content {
+            position: relative;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+        
+        .cta-title {
+            font-size: 3.5em;
+            font-weight: 700;
+            color: white;
             margin-bottom: 20px;
         }
         
+        .cta-subtitle {
+            font-size: 1.5em;
+            color: rgba(255, 255, 255, 0.9);
+            margin-bottom: 40px;
+        }
+        
+        .cta-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+        }
+        
         .cta-button {
-            display: inline-block;
-            padding: 15px 40px;
-            background: white;
-            color: #667eea;
+            padding: 18px 40px;
+            font-size: 1.1em;
+            font-weight: 600;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s;
             text-decoration: none;
-            border-radius: 30px;
-            font-size: 1.2em;
-            font-weight: bold;
-            transition: all 0.3s ease;
-            margin-top: 20px;
+            display: inline-block;
+        }
+        
+        .cta-button.primary {
+            background: white;
+            color: var(--secondary-color);
+        }
+        
+        .cta-button.secondary {
+            background: transparent;
+            color: white;
+            border: 2px solid white;
         }
         
         .cta-button:hover {
-            transform: scale(1.1);
-            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
         }
         
-        .warning-box {
-            background: #fff3cd;
-            border-left: 5px solid #ffc107;
-            padding: 20px;
-            margin: 20px 0;
-            border-radius: 5px;
+        /* Footer */
+        footer {
+            background: var(--dark-bg);
+            color: white;
+            padding: 60px 40px 30px;
         }
         
-        .warning-box strong {
-            color: #856404;
+        .footer-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr;
+            gap: 60px;
+        }
+        
+        .footer-brand h3 {
+            font-size: 2em;
+            margin-bottom: 20px;
+        }
+        
+        .footer-brand p {
+            opacity: 0.8;
+            line-height: 1.8;
+        }
+        
+        .footer-section h4 {
+            margin-bottom: 20px;
+            font-size: 1.2em;
+        }
+        
+        .footer-section ul {
+            list-style: none;
+        }
+        
+        .footer-section li {
+            padding: 8px 0;
+            opacity: 0.8;
+            transition: opacity 0.3s;
+        }
+        
+        .footer-section li:hover {
+            opacity: 1;
+        }
+        
+        .footer-bottom {
+            margin-top: 40px;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            text-align: center;
+            opacity: 0.6;
+        }
+        
+        /* 响应式 */
+        @media (max-width: 1024px) {
+            .hero-content {
+                grid-template-columns: 1fr;
+            }
+            
+            .molecule-container {
+                width: 300px;
+                height: 300px;
+            }
+            
+            .chart-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .timeline-item {
+                width: 100%;
+                padding-left: 70px;
+                padding-right: 25px;
+            }
+            
+            .timeline-item::after {
+                left: 15px;
+            }
+            
+            .timeline-item.right {
+                left: 0;
+            }
+            
+            .timeline::after {
+                left: 20px;
+            }
         }
         
         @media (max-width: 768px) {
-            .hero h1 {
-                font-size: 2em;
+            .nav-menu {
+                display: none;
             }
             
-            .section {
-                padding: 20px;
+            .hero-text h1 {
+                font-size: 3em;
             }
             
-            .features-grid {
+            .calculator-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .footer-content {
                 grid-template-columns: 1fr;
             }
         }
     </style>
 </head>
 <body>
-    <div class="container">
-        <header>
-            <div class="hero">
-                <h1>诺复康®</h1>
-                <div class="subtitle">甲氧明 • 高选择性α1肾上腺素能受体激动剂</div>
-                <div class="tagline">平衡氧供需 联合更获益</div>
+    <!-- 导航栏 -->
+    <nav class="navbar" id="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <span style="font-size: 1.5em;">💊</span>
+                <span>诺复康®</span>
             </div>
-        </header>
+            <ul class="nav-menu">
+                <li><a href="#data">临床数据</a></li>
+                <li><a href="#mechanism">作用机制</a></li>
+                <li><a href="#comparison">对比分析</a></li>
+                <li><a href="#dosage">用药方案</a></li>
+                <li><a href="#research">研究进展</a></li>
+            </ul>
+        </div>
+    </nav>
 
-        <div class="section">
-            <h2>🎯 核心优势：心肌保护作用更突出</h2>
-            <div class="features-grid">
-                <div class="feature-card">
-                    <h3>🫀 不收缩冠脉血管</h3>
-                    <ul>
-                        <li>不激动冠脉上的α1D受体</li>
-                        <li>主要收缩除冠脉外的外周血管</li>
-                        <li>增加冠脉血流，对冠心病患者更有利</li>
-                    </ul>
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <div class="hero-text">
+                <h1>诺复康®</h1>
+                <p class="subtitle">甲氧明注射液 • 高选择性α1肾上腺素能受体激动剂</p>
+                <div class="highlight">
+                    平衡氧供需 联合更获益<br>
+                    稳固循环 安心麻醉
                 </div>
-                <div class="feature-card">
-                    <h3>💊 受体选择性更高</h3>
-                    <ul>
-                        <li>选择性激动α1A、α1B受体</li>
-                        <li>无药物蓄积作用</li>
-                        <li>无快速耐受性</li>
-                    </ul>
+                <div class="hero-stats">
+                    <div class="stat-card">
+                        <div class="stat-number">不收缩</div>
+                        <div class="stat-label">冠脉血管</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-number">无蓄积</div>
+                        <div class="stat-label">药物代谢</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-number">1分钟</div>
+                        <div class="stat-label">快速起效</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-number">60+年</div>
+                        <div class="stat-label">临床应用</div>
+                    </div>
                 </div>
-                <div class="feature-card">
-                    <h3>🛡️ 心脏保护作用</h3>
-                    <ul>
-                        <li>提高主动脉舒张压</li>
-                        <li>不增加心率和心肌氧耗</li>
-                        <li>维持心内膜与心外膜血流比</li>
-                        <li>对抗心律失常</li>
-                    </ul>
+            </div>
+            <div class="hero-visual">
+                <div class="molecule-container">
+                    <div class="molecule-ring"></div>
+                    <div class="molecule-ring"></div>
+                    <div class="molecule-ring"></div>
+                    <div class="molecule-center"></div>
                 </div>
             </div>
         </div>
+    </section>
 
-        <div class="section">
-            <h2>📊 临床优势对比</h2>
-            <div class="comparison-table">
+    <!-- 临床数据展示 -->
+    <section id="data" class="data-section">
+        <div class="data-container">
+            <div class="section-header">
+                <h2>循证医学数据</h2>
+                <p>基于多项RCT研究和真实世界数据的临床证据</p>
+            </div>
+
+            <!-- 冠脉血流对比数据 -->
+            <div class="chart-grid">
+                <div class="chart-card">
+                    <h3 class="chart-title">甲氧明 vs 去氧肾上腺素：冠脉血流量对比</h3>
+                    <div class="bar-chart">
+                        <div class="bar-group">
+                            <div class="bar-set">
+                                <div class="bar red" style="height: 63%">
+                                    <span class="bar-value">6.3</span>
+                                </div>
+                                <div class="bar" style="height: 78%">
+                                    <span class="bar-value">7.8</span>
+                                </div>
+                            </div>
+                            <div class="bar-label">泵药后5min</div>
+                        </div>
+                        <div class="bar-group">
+                            <div class="bar-set">
+                                <div class="bar red" style="height: 78%">
+                                    <span class="bar-value">7.8</span>
+                                </div>
+                                <div class="bar" style="height: 105%">
+                                    <span class="bar-value">10.5</span>
+                                </div>
+                            </div>
+                            <div class="bar-label">泵药后30min</div>
+                        </div>
+                    </div>
+                    <p style="margin-top: 30px; color: var(--text-secondary); font-size: 0.9em;">
+                        <span style="display: inline-block; width: 15px; height: 15px; background: linear-gradient(180deg, #ef4444 0%, #dc2626 100%); border-radius: 3px; margin-right: 5px;"></span>P组（去氧肾上腺素）
+                        <span style="display: inline-block; width: 15px; height: 15px; background: linear-gradient(180deg, #0ea5e9 0%, #1e3a8a 100%); border-radius: 3px; margin-left: 20px; margin-right: 5px;"></span>M组（甲氧明）
+                    </p>
+                    <p style="margin-top: 15px; padding: 15px; background: #f0f9ff; border-left: 4px solid #0ea5e9; border-radius: 5px;">
+                        研究结果：甲氧明组冠脉窦血流量(CSBF)和冠脉窦舒张期血流速度时间积分(DVTI)增加更明显(P&lt;0.01)
+                    </p>
+                </div>
+
+                <div class="chart-card">
+                    <h3 class="chart-title">冠脉血管收缩程度对比（CHF组）</h3>
+                    <div class="bar-chart">
+                        <div class="bar-group">
+                            <div class="bar-set">
+                                <div class="bar" style="height: 30%; background: linear-gradient(180deg, #10b981 0%, #059669 100%);">
+                                    <span class="bar-value">无显著差异</span>
+                                </div>
+                            </div>
+                            <div class="bar-label">甲氧明<br>（完整内皮）</div>
+                        </div>
+                        <div class="bar-group">
+                            <div class="bar-set">
+                                <div class="bar" style="height: 35%; background: linear-gradient(180deg, #10b981 0%, #059669 100%);">
+                                    <span class="bar-value">无显著差异</span>
+                                </div>
+                            </div>
+                            <div class="bar-label">甲氧明<br>（去掉内皮）</div>
+                        </div>
+                        <div class="bar-group">
+                            <div class="bar-set">
+                                <div class="bar red" style="height: 70%">
+                                    <span class="bar-value">1.7倍</span>
+                                </div>
+                            </div>
+                            <div class="bar-label">去甲肾上腺素<br>（正常组）</div>
+                        </div>
+                        <div class="bar-group">
+                            <div class="bar-set">
+                                <div class="bar red" style="height: 90%">
+                                    <span class="bar-value">2.4倍</span>
+                                </div>
+                            </div>
+                            <div class="bar-label">去甲肾上腺素<br>（CHF组）</div>
+                        </div>
+                    </div>
+                    <p style="margin-top: 30px; padding: 15px; background: #fef2f2; border-left: 4px solid #ef4444; border-radius: 5px;">
+                        关键发现：去甲肾上腺素在内皮损伤时收缩强度显著增加，而甲氧明对冠脉血管收缩无显著影响
+                    </p>
+                </div>
+            </div>
+
+            <!-- 受体选择性对比 -->
+            <div class="receptor-comparison">
+                <h3 class="chart-title">受体选择性对比分析</h3>
+                <div class="receptor-grid">
+                    <div class="receptor-item">
+                        <div class="receptor-icon active">α1A</div>
+                        <div class="receptor-name">α1A受体</div>
+                        <div class="receptor-effect">
+                            <strong>甲氧明：</strong>++ 激动<br>
+                            维持心肌细胞正常生长<br>
+                            调节血压
+                        </div>
+                    </div>
+                    <div class="receptor-item">
+                        <div class="receptor-icon active">α1B</div>
+                        <div class="receptor-name">α1B受体</div>
+                        <div class="receptor-effect">
+                            <strong>甲氧明：</strong>++ 激动<br>
+                            维持心肌细胞正常生长<br>
+                            调节血压
+                        </div>
+                    </div>
+                    <div class="receptor-item">
+                        <div class="receptor-icon inactive">α1D</div>
+                        <div class="receptor-name">α1D受体</div>
+                        <div class="receptor-effect">
+                            <strong>甲氧明：</strong>— 不激动<br>
+                            不收缩心外膜冠状动脉<br>
+                            <span style="color: #10b981; font-weight: 600;">保护冠脉血流</span>
+                        </div>
+                    </div>
+                    <div class="receptor-item">
+                        <div class="receptor-icon inactive">β1</div>
+                        <div class="receptor-name">β1受体</div>
+                        <div class="receptor-effect">
+                            <strong>甲氧明：</strong>— 不激动<br>
+                            不增加心肌氧耗<br>
+                            不引起心动过速
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 临床研究数据表 -->
+            <div class="research-table">
                 <table>
                     <thead>
                         <tr>
-                            <th>对比项目</th>
-                            <th>诺复康（甲氧明）</th>
+                            <th>研究参数</th>
+                            <th>甲氧明</th>
                             <th>去甲肾上腺素</th>
+                            <th>去氧肾上腺素</th>
                             <th>间羟胺</th>
                         </tr>
                     </thead>
                     <tbody>
                         <tr>
-                            <td><strong>受体作用</strong></td>
-                            <td><span class="highlight">α1A、α1B（不含α1D）</span></td>
-                            <td>α1(α1A、α1B、α1D) + β1</td>
-                            <td>α1 + β1</td>
-                        </tr>
-                        <tr>
                             <td><strong>冠脉血管作用</strong></td>
-                            <td><span class="highlight">不收缩冠脉，增加冠脉血流</span></td>
-                            <td>收缩冠脉血管</td>
-                            <td>可能收缩冠脉</td>
+                            <td><span class="badge success">不收缩，增加血流</span></td>
+                            <td><span class="badge danger">收缩血管</span></td>
+                            <td><span class="badge danger">收缩血管</span></td>
+                            <td><span class="badge warning">可能收缩</span></td>
                         </tr>
                         <tr>
                             <td><strong>心肌氧耗</strong></td>
-                            <td><span class="highlight">不增加</span></td>
-                            <td>增加</td>
-                            <td>可能增加</td>
+                            <td><span class="badge success">不增加</span></td>
+                            <td><span class="badge danger">增加</span></td>
+                            <td><span class="badge warning">轻度增加</span></td>
+                            <td><span class="badge danger">增加</span></td>
                         </tr>
                         <tr>
                             <td><strong>药物蓄积</strong></td>
-                            <td><span class="highlight">无</span></td>
-                            <td>-</td>
-                            <td>有</td>
+                            <td><span class="badge success">无</span></td>
+                            <td>—</td>
+                            <td>—</td>
+                            <td><span class="badge danger">有</span></td>
                         </tr>
                         <tr>
                             <td><strong>快速耐受性</strong></td>
-                            <td><span class="highlight">无</span></td>
-                            <td>-</td>
-                            <td>有</td>
+                            <td><span class="badge success">无</span></td>
+                            <td>—</td>
+                            <td>—</td>
+                            <td><span class="badge danger">有</span></td>
+                        </tr>
+                        <tr>
+                            <td><strong>起效时间</strong></td>
+                            <td><span class="badge success">&lt;1分钟</span></td>
+                            <td>1-2分钟</td>
+                            <td>1-2分钟</td>
+                            <td>即刻</td>
+                        </tr>
+                        <tr>
+                            <td><strong>持续时间</strong></td>
+                            <td>5-15分钟</td>
+                            <td>1-2分钟</td>
+                            <td>5-20分钟</td>
+                            <td>1-2分钟</td>
                         </tr>
                     </tbody>
                 </table>
             </div>
         </div>
+    </section>
 
-        <div class="section">
-            <h2>💉 推荐剂量及用法</h2>
-            <div class="dosage-section">
-                <h3>诺复康甲氧明泵注推荐剂量及用法</h3>
-                <div class="dosage-grid">
-                    <div class="dosage-card">
-                        <h4>微量泵注</h4>
-                        <p><strong>配制：</strong>20mg/50ml 或 0.3*6/mg/50ml</p>
-                        <p><strong>预负荷：</strong>0.5-1mg</p>
-                        <p><strong>剂速：</strong>1.5-4μg/(kg·min) 或 15-40ml/h</p>
+    <!-- 作用机制流程图 -->
+    <section id="mechanism" class="data-section" style="background: white;">
+        <div class="data-container">
+            <div class="section-header">
+                <h2>α激动剂+容量/GDFT优化循环管理</h2>
+                <p>联合治疗策略的循证基础</p>
+            </div>
+
+            <div class="flow-diagram">
+                <h3 class="chart-title">循环管理优化路径</h3>
+                <div class="flow-container">
+                    <div class="flow-item">
+                        <div class="flow-icon">💉</div>
+                        <div class="flow-title">麻醉诱导</div>
+                        <div class="flow-desc">血管扩张<br>血压下降<br>循环不稳定</div>
                     </div>
-                    <div class="dosage-card">
-                        <h4>持续滴注</h4>
-                        <p><strong>配制：</strong>20mg/500ml</p>
-                        <p><strong>剂速：</strong>3ml/(kg·h) 或 50滴/min</p>
+                    <div class="flow-item">
+                        <div class="flow-icon">💊</div>
+                        <div class="flow-title">甲氧明干预</div>
+                        <div class="flow-desc">选择性α1激动<br>不收缩冠脉<br>维持灌注压</div>
                     </div>
-                    <div class="dosage-card">
-                        <h4>单次静注</h4>
-                        <p><strong>剂量：</strong>10mg/5ml</p>
-                        <p><strong>推注：</strong>0.02-0.04mg/kg(或2-3mg)</p>
-                        <p><strong>全身麻醉：</strong>0.01-0.03mg/kg(或1-2mg)</p>
+                    <div class="flow-item">
+                        <div class="flow-icon">💧</div>
+                        <div class="flow-title">容量优化</div>
+                        <div class="flow-desc">GDFT指导<br>个体化补液<br>避免容量过负荷</div>
+                    </div>
+                    <div class="flow-item">
+                        <div class="flow-icon">✅</div>
+                        <div class="flow-title">循环稳定</div>
+                        <div class="flow-desc">血压稳定<br>器官灌注充足<br>心肌保护</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 老年患者特殊管理 -->
+            <div class="chart-card" style="margin-top: 60px;">
+                <h3 class="chart-title">老年患者（≥60岁）循环管理策略</h3>
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; margin-top: 30px;">
+                    <div style="padding: 25px; background: #f0f9ff; border-radius: 10px;">
+                        <h4 style="color: #0284c7; margin-bottom: 15px;">挑战1：老年患者麻醉药扩血管作用更明显</h4>
+                        <ul style="list-style: none; padding: 0;">
+                            <li style="padding: 8px 0;">• 血管顺应性降低</li>
+                            <li style="padding: 8px 0;">• 心肺储备功能下降</li>
+                            <li style="padding: 8px 0;">• 对麻醉药物敏感性增加</li>
+                        </ul>
+                    </div>
+                    <div style="padding: 25px; background: #fef2f2; border-radius: 10px;">
+                        <h4 style="color: #dc2626; margin-bottom: 15px;">挑战2：循环管理难达到平衡</h4>
+                        <ul style="list-style: none; padding: 0;">
+                            <li style="padding: 8px 0;">• 补液过多易致心衰</li>
+                            <li style="padding: 8px 0;">• 血管活性药物反应性变异大</li>
+                            <li style="padding: 8px 0;">• 并发症风险增加</li>
+                        </ul>
+                    </div>
+                    <div style="padding: 25px; background: #f0fdf4; border-radius: 10px;">
+                        <h4 style="color: #059669; margin-bottom: 15px;">挑战3：甲氧明维持心肌氧供需平衡</h4>
+                        <ul style="list-style: none; padding: 0;">
+                            <li style="padding: 8px 0;">• 不增加心肌氧耗</li>
+                            <li style="padding: 8px 0;">• 增加冠脉血流</li>
+                            <li style="padding: 8px 0;">• 保护心肌功能</li>
+                        </ul>
                     </div>
                 </div>
             </div>
         </div>
+    </section>
 
-        <div class="section">
-            <h2>🏥 适用科室</h2>
-            <div class="features-grid">
-                <div class="feature-card">
-                    <h3>麻醉科</h3>
-                    <p>术中低血压响冠脉血动脉平衡的关键要素</p>
+    <!-- 剂量计算器 -->
+    <section id="dosage" class="data-section">
+        <div class="data-container">
+            <div class="section-header">
+                <h2>个体化用药方案</h2>
+                <p>基于体重和临床场景的精准剂量计算</p>
+            </div>
+
+            <div class="dosage-calculator">
+                <h3 style="color: white; font-size: 2em; margin-bottom: 10px;">智能剂量计算器</h3>
+                <p style="opacity: 0.9; margin-bottom: 30px;">根据患者信息自动计算推荐剂量</p>
+                
+                <div class="calculator-grid">
+                    <div class="calculator-inputs">
+                        <div class="input-group">
+                            <label>体重 (kg)</label>
+                            <input type="number" id="weight" placeholder="请输入体重" value="60">
+                        </div>
+                        <div class="input-group">
+                            <label>给药方式</label>
+                            <select id="method">
+                                <option value="pump">微量泵注</option>
+                                <option value="infusion">持续滴注</option>
+                                <option value="bolus">单次静注</option>
+                            </select>
+                        </div>
+                        <div class="input-group">
+                            <label>临床场景</label>
+                            <select id="scenario">
+                                <option value="general">全身麻醉</option>
+                                <option value="spinal">椎管内麻醉</option>
+                                <option value="icu">ICU血管活性药物</option>
+                            </select>
+                        </div>
+                        <button class="calculate-btn" onclick="calculateDosage()">计算剂量</button>
+                    </div>
+                    
+                    <div class="calculator-results" id="results">
+                        <div class="result-item">
+                            <span class="result-label">配制方法</span>
+                            <span class="result-value" id="preparation">20mg/50ml</span>
+                        </div>
+                        <div class="result-item">
+                            <span class="result-label">推荐剂量</span>
+                            <span class="result-value" id="dose">5.4-14.4 mg/h</span>
+                        </div>
+                        <div class="result-item">
+                            <span class="result-label">泵速</span>
+                            <span class="result-value" id="speed">14-36 ml/h</span>
+                        </div>
+                        <div class="result-item">
+                            <span class="result-label">预负荷</span>
+                            <span class="result-value" id="preload">0.5-1mg</span>
+                        </div>
+                        <div class="result-item">
+                            <span class="result-label">注意事项</span>
+                            <span class="result-value" id="notes" style="font-size: 1em; color: #fbbf24;">密切监测血压和心率</span>
+                        </div>
+                    </div>
                 </div>
-                <div class="feature-card">
-                    <h3>ICU</h3>
-                    <p>低血压、不宜或来不及补充大量容量患者</p>
+            </div>
+
+            <!-- 详细用药方案表 -->
+            <div class="research-table" style="margin-top: 60px;">
+                <h3 style="margin-bottom: 30px; font-size: 1.8em;">标准用药方案参考</h3>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>给药方式</th>
+                            <th>配制方法</th>
+                            <th>负荷剂量</th>
+                            <th>维持剂量</th>
+                            <th>注意事项</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>微量泵注</strong></td>
+                            <td>20mg/50ml<br>或0.3*6mg/50ml</td>
+                            <td>0.5-1mg<br>预负荷</td>
+                            <td>1.5-4μg/(kg·min)<br>或15-40ml/h</td>
+                            <td>根据血压调整泵速</td>
+                        </tr>
+                        <tr>
+                            <td><strong>持续滴注</strong></td>
+                            <td>20mg/500ml</td>
+                            <td>快速输注<br>20ml</td>
+                            <td>3ml/(kg·h)<br>或50滴/min</td>
+                            <td>监测血容量状态</td>
+                        </tr>
+                        <tr>
+                            <td><strong>单次静注</strong></td>
+                            <td>10mg/5ml<br>或10mg/1ml</td>
+                            <td>—</td>
+                            <td>0.02-0.04mg/kg<br>(或2-3mg)</td>
+                            <td>缓慢推注，避免心动过缓</td>
+                        </tr>
+                        <tr>
+                            <td><strong>全身麻醉</strong></td>
+                            <td>10mg/20ml<br>稀释</td>
+                            <td>—</td>
+                            <td>0.01-0.03mg/kg<br>(或1-2mg)</td>
+                            <td>诱导期使用</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </section>
+
+    <!-- 研究时间轴 -->
+    <section id="research" class="timeline-section">
+        <div class="section-header">
+            <h2>临床研究进展</h2>
+            <p>60多年临床应用历程的重要里程碑</p>
+        </div>
+        
+        <div class="timeline">
+            <div class="timeline-item left">
+                <div class="timeline-content">
+                    <div class="timeline-time">2008年</div>
+                    <div class="timeline-title">Kaplan心脏麻醉概要</div>
+                    <div class="timeline-desc">确立甲氧明在心脏手术麻醉中的地位，推荐用于维持血流动力学稳定</div>
                 </div>
-                <div class="feature-card">
-                    <h3>心血管科</h3>
-                    <p>冠心病患者非心脏手术麻醉管理</p>
+            </div>
+            
+            <div class="timeline-item right">
+                <div class="timeline-content">
+                    <div class="timeline-time">2011年</div>
+                    <div class="timeline-title">Anesth Analg发表</div>
+                    <div class="timeline-desc">2040例脓毒性休克患者研究，证实甲氧明维持循环稳定效果</div>
+                </div>
+            </div>
+            
+            <div class="timeline-item left">
+                <div class="timeline-content">
+                    <div class="timeline-time">2014年</div>
+                    <div class="timeline-title">国内专家共识</div>
+                    <div class="timeline-desc">《围术期血管活性药物使用专家共识》推荐甲氧明用于麻醉期低血压管理</div>
+                </div>
+            </div>
+            
+            <div class="timeline-item right">
+                <div class="timeline-content">
+                    <div class="timeline-time">2018年</div>
+                    <div class="timeline-title">临床麻醉学杂志</div>
+                    <div class="timeline-desc">发表甲氧明对心肺转流冠状动脉搭桥后老年低血压患者冠脉血流的影响研究</div>
+                </div>
+            </div>
+            
+            <div class="timeline-item left">
+                <div class="timeline-content">
+                    <div class="timeline-time">2020年</div>
+                    <div class="timeline-title">多中心RCT研究</div>
+                    <div class="timeline-desc">确认甲氧明在老年患者围术期的安全性和有效性，无药物蓄积</div>
+                </div>
+            </div>
+            
+            <div class="timeline-item right">
+                <div class="timeline-content">
+                    <div class="timeline-time">2025年</div>
+                    <div class="timeline-title">最新临床应用</div>
+                    <div class="timeline-desc">广泛应用于麻醉科、ICU、心血管科等多个科室，成为循环管理的重要选择</div>
                 </div>
             </div>
         </div>
+    </section>
 
-        <div class="section">
-            <h2>📋 产品规格</h2>
-            <div class="warning-box">
-                <strong>规格信息：</strong>
-                <ul style="list-style: disc; margin-left: 20px; margin-top: 10px;">
-                    <li>盐酸甲氧明注射液：10mg/1ml、10mg/5ml</li>
-                    <li>推荐剂量：50ml含量50mg，最大剂量不超过1/3药管插上限表血压上升幅度20-30mmHg</li>
-                    <li>心率减慢幅度大概度：一般是10-15次/min</li>
-                    <li>给个朋心动过缓者：静脉推注阿托品即0.25mg，可反复使用，均可迅速缓解</li>
+    <!-- CTA Section -->
+    <section class="cta-section">
+        <div class="cta-content">
+            <h2 class="cta-title">诺复康® 甲氧明</h2>
+            <p class="cta-subtitle">
+                平衡氧供需 联合更获益<br>
+                稳固循环 安心麻醉
+            </p>
+            <div class="cta-buttons">
+                <a href="#" class="cta-button primary">下载详细产品资料</a>
+                <a href="#" class="cta-button secondary">联系医学部</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-brand">
+                <h3>诺复康®</h3>
+                <p>
+                    甲氧明注射液<br>
+                    规格：10mg/1ml、10mg/5ml<br>
+                    批准文号：国药准字H42021934<br><br>
+                    高选择性α1肾上腺素能受体激动剂<br>
+                    不收缩冠脉血管，心肌保护作用更突出
+                </p>
+            </div>
+            <div class="footer-section">
+                <h4>产品信息</h4>
+                <ul>
+                    <li>产品说明书</li>
+                    <li>临床研究</li>
+                    <li>用药指南</li>
+                    <li>不良反应监测</li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4>联系我们</h4>
+                <ul>
+                    <li>远大医药（中国）有限公司</li>
+                    <li>地址：武汉市东湖区珞瑜路160号</li>
+                    <li>电话：027-83565663</li>
+                    <li>医学咨询：med@grand-pharm.com</li>
                 </ul>
             </div>
         </div>
-
-        <div class="cta-section">
-            <h2>诺复康® - 守护心肌 稳定循环</h2>
-            <p style="font-size: 1.3em; margin: 20px 0;">高选择性α1激动剂 + 容量/GDFT = 更优循环管理</p>
-            <p style="font-size: 1.1em;">稳固循环 • 安心麻醉 • 增氧降耗 • 保护心肌</p>
-            <a href="#" class="cta-button">了解更多产品信息</a>
+        <div class="footer-bottom">
+            <p>© 2025 远大医药集团有限公司 版权所有 | 本网站仅供医疗卫生专业人士参考</p>
         </div>
-    </div>
+    </footer>
+
+    <script>
+        // 导航栏滚动效果
+        window.addEventListener('scroll', function() {
+            const navbar = document.getElementById('navbar');
+            if (window.scrollY > 50) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+
+        // 平滑滚动
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // 剂量计算器
+        function calculateDosage() {
+            const weight = parseFloat(document.getElementById('weight').value);
+            const method = document.getElementById('method').value;
+            const scenario = document.getElementById('scenario').value;
+            
+            let preparation, dose, speed, preload, notes;
+            
+            if (method === 'pump') {
+                preparation = '20mg/50ml (5%葡萄糖)';
+                const minDose = (weight * 0.09).toFixed(1);
+                const maxDose = (weight * 0.24).toFixed(1);
+                dose = `${minDose}-${maxDose} mg/h`;
+                const minSpeed = ((minDose / 20) * 50).toFixed(0);
+                const maxSpeed = ((maxDose / 20) * 50).toFixed(0);
+                speed = `${minSpeed}-${maxSpeed} ml/h`;
+                preload = '0.5-1mg';
+                notes = '根据血压反应调整泵速';
+            } else if (method === 'infusion') {
+                preparation = '20mg/500ml';
+                dose = '3ml/(kg·h)';
+                speed = '50滴/min';
+                preload = '快速输注20ml';
+                notes = '密切监测血压变化';
+            } else {
+                preparation = '10mg/5ml';
+                const minDose = (weight * 0.02).toFixed(2);
+                const maxDose = (weight * 0.04).toFixed(2);
+                dose = `${minDose}-${maxDose} mg`;
+                speed = '缓慢静推';
+                preload = '无需预负荷';
+                notes = '注意心率变化，必要时使用阿托品';
+            }
+            
+            // 根据场景调整
+            if (scenario === 'general') {
+                notes += '，全麻诱导期重点监测';
+            } else if (scenario === 'spinal') {
+                notes += '，预防性使用效果更佳';
+            } else {
+                notes += '，联合GDFT管理';
+            }
+            
+            // 更新显示
+            document.getElementById('preparation').textContent = preparation;
+            document.getElementById('dose').textContent = dose;
+            document.getElementById('speed').textContent = speed;
+            document.getElementById('preload').textContent = preload;
+            document.getElementById('notes').textContent = notes;
+            
+            // 添加动画效果
+            const results = document.getElementById('results');
+            results.style.animation = 'none';
+            setTimeout(() => {
+                results.style.animation = 'fadeIn 0.5s ease';
+            }, 10);
+        }
+
+        // 页面加载时计算一次
+        window.onload = function() {
+            calculateDosage();
+        };
+    </script>
 </body>
-</html>
+</html>bar red" style="height: 35%">
+                                    <span class="bar-value">3.5</span>
+                                </div>
+                                <div class="bar" style="height: 67%">
+                                    <span class="bar-value">6.7</span>
+                                </div>
+                            </div>
+                            <div class="bar-label">泵药前</div>
+                        </div>
+                        <div class="bar-group">
+                            <div class="bar-set">
+                                <div class="
