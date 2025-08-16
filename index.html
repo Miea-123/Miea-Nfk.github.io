@@ -851,6 +851,133 @@
             opacity: 0.6;
         }
         
+        /* 移动端导航样式 */
+        .mobile-menu-toggle {
+            display: none;
+            flex-direction: column;
+            justify-content: space-between;
+            width: 30px;
+            height: 24px;
+            cursor: pointer;
+            z-index: 10001;
+        }
+        
+        .mobile-menu-toggle span {
+            width: 100%;
+            height: 3px;
+            background: var(--primary-color);
+            border-radius: 3px;
+            transition: all 0.3s;
+        }
+        
+        .mobile-menu-toggle.active span:nth-child(1) {
+            transform: rotate(45deg) translateY(10px);
+        }
+        
+        .mobile-menu-toggle.active span:nth-child(2) {
+            opacity: 0;
+        }
+        
+        .mobile-menu-toggle.active span:nth-child(3) {
+            transform: rotate(-45deg) translateY(-10px);
+        }
+        
+        .mobile-menu {
+            display: none;
+            position: fixed;
+            top: 80px;
+            left: 0;
+            right: 0;
+            background: white;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            z-index: 9998;
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease;
+        }
+        
+        .mobile-menu.active {
+            max-height: 400px;
+        }
+        
+        .mobile-menu ul {
+            list-style: none;
+            padding: 20px;
+        }
+        
+        .mobile-menu li {
+            padding: 15px 0;
+            border-bottom: 1px solid #f0f0f0;
+        }
+        
+        .mobile-menu li:last-child {
+            border-bottom: none;
+        }
+        
+        .mobile-menu a {
+            color: var(--text-primary);
+            text-decoration: none;
+            font-size: 1.1em;
+            font-weight: 500;
+            display: block;
+            transition: color 0.3s;
+        }
+        
+        .mobile-menu a:active {
+            color: var(--primary-color);
+        }
+        
+        /* 移动端快速导航标签 */
+        .mobile-quick-nav {
+            display: none;
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: white;
+            box-shadow: 0 -5px 20px rgba(0, 0, 0, 0.1);
+            z-index: 9997;
+            padding: 10px 0;
+        }
+        
+        .quick-nav-container {
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            max-width: 100%;
+            padding: 0 10px;
+        }
+        
+        .quick-nav-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-decoration: none;
+            color: var(--text-secondary);
+            transition: all 0.3s;
+            padding: 5px;
+            flex: 1;
+        }
+        
+        .quick-nav-item:active {
+            color: var(--primary-color);
+            transform: scale(0.95);
+        }
+        
+        .nav-icon {
+            font-size: 1.5em;
+            margin-bottom: 5px;
+        }
+        
+        .nav-text {
+            font-size: 0.75em;
+            font-weight: 500;
+        }
+        
+        .desktop-menu {
+            display: flex;
+        }
+        
         /* 响应式 */
         @media (max-width: 1024px) {
             .hero-content {
@@ -886,8 +1013,24 @@
         }
         
         @media (max-width: 768px) {
-            .nav-menu {
+            .desktop-menu {
                 display: none;
+            }
+            
+            .mobile-menu-toggle {
+                display: flex;
+            }
+            
+            .mobile-menu {
+                display: block;
+            }
+            
+            .mobile-quick-nav {
+                display: block;
+            }
+            
+            .hero {
+                margin-bottom: 70px;
             }
             
             .hero-text h1 {
@@ -900,6 +1043,114 @@
             
             .footer-content {
                 grid-template-columns: 1fr;
+                padding-bottom: 80px;
+            }
+            
+            .chart-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .flow-container {
+                flex-direction: column;
+                gap: 30px;
+            }
+            
+            .flow-item::after {
+                content: '↓';
+                right: 50%;
+                top: auto;
+                bottom: -25px;
+                transform: translateX(50%);
+            }
+            
+            .section-header h2 {
+                font-size: 2em;
+            }
+            
+            .chart-card {
+                padding: 25px;
+            }
+            
+            .bar-chart {
+                height: 250px;
+            }
+            
+            .bar {
+                width: 30px;
+            }
+            
+            .receptor-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .research-table {
+                overflow-x: auto;
+            }
+            
+            .research-table table {
+                min-width: 600px;
+            }
+            
+            .dosage-calculator {
+                padding: 30px 20px;
+            }
+            
+            .timeline-item {
+                width: 100%;
+                padding-left: 50px;
+                padding-right: 20px;
+            }
+            
+            .timeline-item::after {
+                left: 10px;
+            }
+            
+            .timeline-item.right {
+                left: 0;
+            }
+            
+            .timeline::after {
+                left: 15px;
+            }
+            
+            .molecule-container {
+                width: 250px;
+                height: 250px;
+            }
+            
+            .hero-stats {
+                grid-template-columns: 1fr;
+                gap: 15px;
+            }
+            
+            .stat-card {
+                padding: 15px;
+            }
+            
+            /* 调整移动端内容间距 */
+            .content-section,
+            .data-section {
+                padding: 60px 20px 80px;
+            }
+            
+            /* 优化移动端表格显示 */
+            .comparison-table table {
+                font-size: 0.9em;
+            }
+            
+            .comparison-table th,
+            .comparison-table td {
+                padding: 12px;
+            }
+            
+            /* 移动端按钮优化 */
+            .cta-buttons {
+                flex-direction: column;
+            }
+            
+            .cta-button {
+                width: 100%;
+                text-align: center;
             }
         }
     </style>
@@ -912,15 +1163,61 @@
                 <span style="font-size: 1.5em;">💊</span>
                 <span>诺复康®</span>
             </div>
-            <ul class="nav-menu">
+            
+            <!-- 桌面端菜单 -->
+            <ul class="nav-menu desktop-menu">
                 <li><a href="#mechanism">作用机制</a></li>
                 <li><a href="#data">临床数据</a></li>
                 <li><a href="#comparison">对比分析</a></li>
                 <li><a href="#dosage">用药方案</a></li>
                 <li><a href="#research">研究进展</a></li>
             </ul>
+            
+            <!-- 移动端菜单按钮 -->
+            <div class="mobile-menu-toggle" onclick="toggleMobileMenu()">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+        
+        <!-- 移动端菜单 -->
+        <div class="mobile-menu" id="mobileMenu">
+            <ul>
+                <li><a href="#mechanism" onclick="closeMobileMenu()">作用机制</a></li>
+                <li><a href="#data" onclick="closeMobileMenu()">临床数据</a></li>
+                <li><a href="#comparison" onclick="closeMobileMenu()">对比分析</a></li>
+                <li><a href="#dosage" onclick="closeMobileMenu()">用药方案</a></li>
+                <li><a href="#research" onclick="closeMobileMenu()">研究进展</a></li>
+            </ul>
         </div>
     </nav>
+    
+    <!-- 移动端快速导航标签 -->
+    <div class="mobile-quick-nav">
+        <div class="quick-nav-container">
+            <a href="#mechanism" class="quick-nav-item">
+                <span class="nav-icon">🔬</span>
+                <span class="nav-text">机制</span>
+            </a>
+            <a href="#data" class="quick-nav-item">
+                <span class="nav-icon">📊</span>
+                <span class="nav-text">数据</span>
+            </a>
+            <a href="#comparison" class="quick-nav-item">
+                <span class="nav-icon">⚖️</span>
+                <span class="nav-text">对比</span>
+            </a>
+            <a href="#dosage" class="quick-nav-item">
+                <span class="nav-icon">💉</span>
+                <span class="nav-text">用药</span>
+            </a>
+            <a href="#research" class="quick-nav-item">
+                <span class="nav-icon">📈</span>
+                <span class="nav-text">研究</span>
+            </a>
+        </div>
+    </div>
 
     <!-- Hero Section -->
     <section class="hero">
@@ -1783,6 +2080,34 @@
     </footer>
 
     <script>
+        // 移动端菜单控制
+        function toggleMobileMenu() {
+            const mobileMenu = document.getElementById('mobileMenu');
+            const menuToggle = document.querySelector('.mobile-menu-toggle');
+            
+            mobileMenu.classList.toggle('active');
+            menuToggle.classList.toggle('active');
+        }
+        
+        function closeMobileMenu() {
+            const mobileMenu = document.getElementById('mobileMenu');
+            const menuToggle = document.querySelector('.mobile-menu-toggle');
+            
+            mobileMenu.classList.remove('active');
+            menuToggle.classList.remove('active');
+        }
+        
+        // 点击外部关闭菜单
+        document.addEventListener('click', function(event) {
+            const mobileMenu = document.getElementById('mobileMenu');
+            const menuToggle = document.querySelector('.mobile-menu-toggle');
+            
+            if (!mobileMenu.contains(event.target) && !menuToggle.contains(event.target)) {
+                mobileMenu.classList.remove('active');
+                menuToggle.classList.remove('active');
+            }
+        });
+        
         // 导航栏滚动效果
         window.addEventListener('scroll', function() {
             const navbar = document.getElementById('navbar');
@@ -1799,13 +2124,47 @@
                 e.preventDefault();
                 const target = document.querySelector(this.getAttribute('href'));
                 if (target) {
-                    target.scrollIntoView({
-                        behavior: 'smooth',
-                        block: 'start'
+                    // 计算偏移量，考虑固定导航栏和底部快速导航
+                    const navHeight = document.querySelector('.navbar').offsetHeight;
+                    const quickNavHeight = window.innerWidth <= 768 ? 70 : 0;
+                    const targetPosition = target.getBoundingClientRect().top + window.pageYOffset - navHeight - 20;
+                    
+                    window.scrollTo({
+                        top: targetPosition,
+                        behavior: 'smooth'
                     });
                 }
             });
         });
+        
+        // 高亮当前章节的快速导航
+        function highlightActiveSection() {
+            if (window.innerWidth > 768) return;
+            
+            const sections = ['mechanism', 'data', 'comparison', 'dosage', 'research'];
+            const quickNavItems = document.querySelectorAll('.quick-nav-item');
+            
+            let currentSection = '';
+            
+            sections.forEach(sectionId => {
+                const section = document.getElementById(sectionId);
+                if (section) {
+                    const rect = section.getBoundingClientRect();
+                    if (rect.top <= 150 && rect.bottom >= 150) {
+                        currentSection = sectionId;
+                    }
+                }
+            });
+            
+            quickNavItems.forEach(item => {
+                item.style.color = item.getAttribute('href').substring(1) === currentSection 
+                    ? 'var(--primary-color)' 
+                    : 'var(--text-secondary)';
+            });
+        }
+        
+        window.addEventListener('scroll', highlightActiveSection);
+        window.addEventListener('resize', highlightActiveSection);
 
         // 剂量计算器
         function calculateDosage() {
