@@ -978,8 +978,405 @@
             display: flex;
         }
         
-        /* 响应式 */
+        /* 中等屏幕优化 */
         @media (max-width: 1024px) {
+            .hero-content {
+                grid-template-columns: 1fr;
+                gap: 50px;
+            }
+            
+            .molecule-container {
+                width: 350px;
+                height: 350px;
+            }
+            
+            .chart-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .timeline-item {
+                width: 100%;
+                padding-left: 70px;
+                padding-right: 25px;
+            }
+            
+            .timeline-item::after {
+                left: 15px;
+            }
+            
+            .timeline-item.right {
+                left: 0;
+            }
+            
+            .timeline::after {
+                left: 20px;
+            }
+            
+            .advantages-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .data-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .indication-cards {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+        
+        /* 改进的响应式设计 */
+        @media (max-width: 768px) {
+            .desktop-menu {
+                display: none;
+            }
+            
+            .mobile-menu-toggle {
+                display: flex;
+            }
+            
+            .mobile-menu {
+                display: block;
+            }
+            
+            .mobile-quick-nav {
+                display: block;
+            }
+            
+            .hero {
+                margin-bottom: 70px;
+                min-height: auto;
+                padding: 60px 20px;
+            }
+            
+            .hero-content {
+                grid-template-columns: 1fr;
+                gap: 40px;
+                padding: 0;
+            }
+            
+            .hero-text h1 {
+                font-size: 2.5em;
+            }
+            
+            .hero-text .subtitle {
+                font-size: 1.2em;
+            }
+            
+            .hero-text .highlight {
+                font-size: 1.1em;
+                padding: 10px 0;
+                padding-left: 15px;
+            }
+            
+            .calculator-grid {
+                grid-template-columns: 1fr;
+                gap: 30px;
+            }
+            
+            .chart-grid {
+                grid-template-columns: 1fr;
+                gap: 30px;
+            }
+            
+            .flow-container {
+                flex-direction: column;
+                gap: 30px;
+            }
+            
+            .flow-item::after {
+                content: '↓';
+                right: 50%;
+                top: auto;
+                bottom: -25px;
+                transform: translateX(50%);
+            }
+            
+            .section-header h2 {
+                font-size: 1.8em;
+            }
+            
+            .section-header p {
+                font-size: 1em;
+            }
+            
+            .chart-card {
+                padding: 20px;
+            }
+            
+            .chart-title {
+                font-size: 1.2em;
+            }
+            
+            .bar-chart {
+                height: 250px;
+                padding: 15px;
+            }
+            
+            .bar {
+                width: 25px;
+            }
+            
+            .bar-value {
+                font-size: 0.9em;
+                top: -25px;
+            }
+            
+            .bar-label {
+                font-size: 0.8em;
+            }
+            
+            .receptor-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 15px;
+            }
+            
+            .receptor-item {
+                padding: 20px 15px;
+            }
+            
+            .receptor-icon {
+                width: 60px;
+                height: 60px;
+                font-size: 1.5em;
+            }
+            
+            .research-table {
+                overflow-x: auto;
+                -webkit-overflow-scrolling: touch;
+            }
+            
+            .research-table table {
+                min-width: 600px;
+                font-size: 0.85em;
+            }
+            
+            .research-table th,
+            .research-table td {
+                padding: 15px;
+            }
+            
+            .dosage-calculator {
+                padding: 30px 15px;
+            }
+            
+            .timeline-item {
+                width: 100%;
+                padding-left: 50px;
+                padding-right: 15px;
+            }
+            
+            .timeline-item::after {
+                left: 10px;
+            }
+            
+            .timeline-item.right {
+                left: 0;
+            }
+            
+            .timeline::after {
+                left: 15px;
+            }
+            
+            .timeline-content {
+                padding: 20px;
+            }
+            
+            .molecule-container {
+                width: 250px;
+                height: 250px;
+            }
+            
+            .hero-stats {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 15px;
+            }
+            
+            .stat-card {
+                padding: 15px;
+            }
+            
+            .stat-number {
+                font-size: 1.8em;
+            }
+            
+            /* 调整移动端内容间距 */
+            .content-section,
+            .data-section {
+                padding: 60px 15px 80px;
+            }
+            
+            .section-header {
+                margin-bottom: 40px;
+            }
+            
+            /* 优化移动端表格显示 */
+            .comparison-table table {
+                font-size: 0.85em;
+            }
+            
+            .comparison-table th,
+            .comparison-table td {
+                padding: 10px;
+            }
+            
+            /* 移动端按钮优化 */
+            .cta-buttons {
+                flex-direction: column;
+                gap: 15px;
+            }
+            
+            .cta-button {
+                width: 100%;
+                text-align: center;
+                padding: 15px 30px;
+                font-size: 1em;
+            }
+            
+            .cta-title {
+                font-size: 2.5em;
+            }
+            
+            .cta-subtitle {
+                font-size: 1.2em;
+            }
+            
+            .cta-section {
+                padding: 60px 20px 100px;
+            }
+            
+            /* 对比分析部分移动端优化 */
+            .chart-card h3 {
+                font-size: 1.1em;
+            }
+            
+            .flow-diagram {
+                padding: 30px 20px;
+            }
+            
+            /* 修复移动端横向滚动问题 */
+            body {
+                overflow-x: hidden;
+            }
+            
+            .data-container {
+                padding: 0;
+            }
+            
+            /* 优化移动端对比卡片 */
+            .comparison-section > div {
+                grid-template-columns: 1fr;
+            }
+            
+            /* 剂量计算器移动端优化 */
+            .input-group input,
+            .input-group select {
+                font-size: 16px; /* 防止iOS自动缩放 */
+                padding: 15px;
+            }
+            
+            .calculate-btn {
+                padding: 15px 30px;
+                font-size: 1em;
+            }
+            
+            .calculator-results {
+                padding: 25px 20px;
+            }
+            
+            .result-value {
+                font-size: 1.1em;
+            }
+            
+            /* 作用机制部分移动端优化 */
+            #mechanism .flow-diagram > div > div {
+                grid-template-columns: 1fr;
+            }
+            
+            #mechanism .flow-diagram table {
+                font-size: 0.8em;
+            }
+            
+            #mechanism .flow-diagram td,
+            #mechanism .flow-diagram th {
+                padding: 10px 8px;
+            }
+            
+            /* 底部快速导航优化 */
+            .mobile-quick-nav {
+                padding: 8px 0;
+                background: rgba(255, 255, 255, 0.98);
+            }
+            
+            .nav-icon {
+                font-size: 1.3em;
+            }
+            
+            .nav-text {
+                font-size: 0.7em;
+            }
+        }
+        
+        /* 小屏幕手机优化 */
+        @media (max-width: 375px) {
+            .hero-text h1 {
+                font-size: 2em;
+            }
+            
+            .section-header h2 {
+                font-size: 1.5em;
+            }
+            
+            .bar {
+                width: 20px;
+            }
+            
+            .bar-set {
+                gap: 10px;
+            }
+            
+            .receptor-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .hero-stats {
+                grid-template-columns: 1fr;
+            }
+            
+            .stat-card {
+                display: flex;
+                align-items: center;
+                gap: 20px;
+            }
+            
+            .stat-number {
+                font-size: 1.5em;
+            }
+        }
+        
+        /* 横屏模式优化 */
+        @media (max-width: 768px) and (orientation: landscape) {
+            .hero {
+                min-height: auto;
+            }
+            
+            .mobile-quick-nav {
+                padding: 5px 0;
+            }
+            
+            .nav-icon {
+                font-size: 1.2em;
+            }
+            
+            .nav-text {
+                font-size: 0.65em;
+            }
+        }
+        
+        /* 删除Footer相关样式 */
+        footer {
+            display: none;
+        }
             .hero-content {
                 grid-template-columns: 1fr;
             }
@@ -2041,43 +2438,6 @@
             </div>
         </div>
     </section>
-
-    <!-- Footer -->
-    <footer>
-        <div class="footer-content">
-            <div class="footer-brand">
-                <h3>诺复康®</h3>
-                <p>
-                    甲氧明注射液<br>
-                    规格：10mg/1ml、10mg/5ml<br>
-                    批准文号：国药准字H42021934<br><br>
-                    高选择性α1肾上腺素能受体激动剂<br>
-                    不收缩冠脉血管，心肌保护作用更突出
-                </p>
-            </div>
-            <div class="footer-section">
-                <h4>产品信息</h4>
-                <ul>
-                    <li>产品说明书</li>
-                    <li>临床研究</li>
-                    <li>用药指南</li>
-                    <li>不良反应监测</li>
-                </ul>
-            </div>
-            <div class="footer-section">
-                <h4>联系我们</h4>
-                <ul>
-                    <li>远大医药（中国）有限公司</li>
-                    <li>地址：武汉市东湖区珞瑜路160号</li>
-                    <li>电话：027-83565663</li>
-                    <li>医学咨询：med@grand-pharm.com</li>
-                </ul>
-            </div>
-        </div>
-        <div class="footer-bottom">
-            <p>© 2025 远大医药集团有限公司 版权所有 | 本网站仅供医疗卫生专业人士参考</p>
-        </div>
-    </footer>
 
     <script>
         // 移动端菜单控制
